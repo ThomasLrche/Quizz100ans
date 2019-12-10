@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Quizz100ans</string>
+    <string name="editTextPseudo">Pseudo</string>
+    <string name="editTextAge">Age</string>
+    <string name="buttonValiderMenu">Valider</string>
+    <string name="buttonQuitter">Quitter</string>
+    <string name="textViewTitreLieu">Choisir un lieu :</string>
 </resources>
