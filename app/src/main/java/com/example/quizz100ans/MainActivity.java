@@ -14,7 +14,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.example.quizz100ans.R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
+        //création d'un écouteur pour les deux boutons
+        Button btnAccueilMenu = findViewById(R.id.buttonValiderMenu);
+
+        btnAccueilMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, choixlieu_activity.class));
+            }
+        });
     }
 }
