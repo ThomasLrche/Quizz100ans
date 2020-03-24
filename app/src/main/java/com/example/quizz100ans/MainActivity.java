@@ -14,13 +14,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
+
+
         //création d'un écouteur pour le bouton
         Button btnValider = findViewById(R.id.buttonValiderMenu);
+        Button btnTestBdd = findViewById(R.id.buttonQuitter);
 
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, choixlieu_activity.class));
+            }
+        });
+
+
+        btnTestBdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AffichageBdd.class));
             }
         });
     }

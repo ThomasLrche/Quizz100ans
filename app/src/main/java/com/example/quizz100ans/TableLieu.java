@@ -5,11 +5,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class TableLieu extends SQLiteOpenHelper {
-    private static final String TABLE_LIEU = "LIEU";
-    static final String LIEU_ID = "id";
+    private static final String TABLE_Lieu = "test";
+    static final String LIEU_ID = "_id";
     private static final String LIEU = "lieu";
 
-    private static final String CREATE_BDD = "CREATE TABLE " + TABLE_LIEU + " ("+LIEU_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ LIEU + " String NOT NULL);";
+    private static final String CREATE_BDD = "CREATE TABLE " + TABLE_Lieu + " ("+LIEU_ID+" INTEGER PRIMARY KEY AUTOINCREMENT," + LIEU+" TEXT NOT NULL);";
 
     //constructeur paramétré
     public TableLieu(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -25,8 +25,8 @@ public class TableLieu extends SQLiteOpenHelper {
     // appelée si la version de la base a changé
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //On peut  supprimer la table et de la recréer
-        db.execSQL("DROP TABLE " + TABLE_LIEU + ";");
-        onCreate(db);
+        //db.execSQL("DROP TABLE " + TABLE_Lieu + ";");
+      onCreate(db);
     }
 
 }
