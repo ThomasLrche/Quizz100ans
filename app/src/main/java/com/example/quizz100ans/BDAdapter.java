@@ -113,6 +113,6 @@ public class BDAdapter {
     public Cursor getTableReponse() {
         return db.rawQuery("SELECT * FROM TABLE_Reponse;",null);
     }
-    public Cursor getLieu() { return db.rawQuery("SELECT COL_LIEU FROM TABLE_Lieu;",null); }
+    public Cursor getQuestions() { return db.rawQuery("SELECT * FROM TABLE_Question INNER JOIN TABLE_Lieu ON TABLE_Question.id_lieu = TABLE_Lieu._id WHERE id_lieu = TABLE_Lieu._id ;",null);}
 
 }
