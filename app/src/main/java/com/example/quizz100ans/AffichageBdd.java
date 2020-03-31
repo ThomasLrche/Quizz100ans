@@ -23,15 +23,15 @@ public class AffichageBdd extends AppCompatActivity {
     public void bdd(){
 
         ListView listViewReleves = (ListView) findViewById(R.id.Affichage);
-        BdAdapter ReleveBdd = new BdAdapter(AffichageBdd.this);
+        BDAdapter ReleveBdd = new BDAdapter(AffichageBdd.this);
         //On ouvre la base de données pour écrire dedans
         ReleveBdd.open();
-        Cursor c = ReleveBdd.getTableLieu();
+        Cursor c = ReleveBdd.getTableReponse();
         Toast.makeText(getApplicationContext(), "il y a " + String.valueOf(c.getCount()) + " relevés dans la BD", Toast.LENGTH_LONG).show();
         // colonnes à afficher
-        String[] columns = new String[]{BdAdapter.COL_ID,BdAdapter.COL_LIEU};
+        String[] columns = new String[]{BDAdapter.REP_ID, BDAdapter.REPONSE1, BDAdapter.REPONSE2, BDAdapter.REPONSE3, BDAdapter.BONNEREPONSE, BDAdapter.IDQuestion};
         // champs dans lesquelles afficher les colonnes
-        int[] to = new int[]{ R.id.Temp,R.id.Mois};
+        int[] to = new int[]{ R.id.Id,R.id.rep1,R.id.rep2,R.id.rep3,R.id.reponse,R.id.idQuestion};
         SimpleCursorAdapter dataAdapter = new SimpleCursorAdapter(AffichageBdd.this, R.layout.affichage_bdd, c, columns, to, 0);
         // Assign adapter to ListView
         listViewReleves.setAdapter(dataAdapter);

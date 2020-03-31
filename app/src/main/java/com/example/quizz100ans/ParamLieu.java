@@ -1,23 +1,15 @@
 package com.example.quizz100ans;
 
 public class ParamLieu {
-    protected String id_lieu;
+
     protected String lieu;
+    protected String _id;
 
     //contructeur paramétré
-    public ParamLieu (String unidlieu, String idlieu){
+    public ParamLieu (String id,String lieu){
         super();
-        this.id_lieu=unidlieu;
-        this.lieu=idlieu;
-    }
-
-    //Les accesseurs
-    public String getId_lieu() {
-        return id_lieu;
-    }
-
-    public void setId_lieu(String id_lieu) {
-        this.id_lieu = id_lieu;
+        this.lieu=lieu;
+        this._id=id;
     }
 
     public String getLieu() {
@@ -26,5 +18,13 @@ public class ParamLieu {
 
     public void setLieu(String lieu) {
         this.lieu = lieu;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 }

@@ -9,30 +9,55 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/Mois"
+            android:id="@+id/Id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="id" />
 
         <TextView
-            android:id="@+id/Temp"
+            android:id="@+id/rep1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Lieu" />
+            android:text="rep1" />
 
+        <TextView
+            android:id="@+id/rep2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="rep2" />
+
+        <TextView
+            android:id="@+id/rep3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="rep3" />
+
+        <TextView
+            android:id="@+id/reponse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="reponse" />
+
+        <TextView
+            android:id="@+id/idQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="idquestion" />
 
 
     </LinearLayout>
 
 
-
-
     <ListView
         android:id="@+id/Affichage"
         android:layout_width="match_parent"
-        android:layout_height="486dp">
+        android:layout_height="191dp">
 
     </ListView>
 </LinearLayout>
