@@ -1,6 +1,8 @@
 package com.example.quizz100ans;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -26,8 +28,19 @@ public class choixlieu_activity extends AppCompatActivity {
 
         //Création d'une liste d'éléments à mettre dans le Spinner
         List spinnerList = new ArrayList();
-        spinnerList.add("St-joseph");
-        spinnerList.add("St-jacques");
+
+        BDAdapter LieuxBdd = new BDAdapter(choixlieu_activity.this);
+
+        //On ouvre la base de données pour écrire dedans
+        LieuxBdd.open();
+        Cursor cursor = LieuxBdd.getTableLieu();
+
+        if(cursor.getCount() > 0) {
+            while(cursor.moveToNext()) {
+                spinnerList.add(cursor.getString(cursor.getColumnIndex("Lieu")));
+            }
+        }
+        LieuxBdd.close();
 
         //Passage d'un contexte et d'un fichier de présentation dans un adapter pour le spinner
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerList);

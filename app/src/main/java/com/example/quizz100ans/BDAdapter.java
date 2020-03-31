@@ -113,5 +113,6 @@ public class BDAdapter {
     public Cursor getTableReponse() {
         return db.rawQuery("SELECT * FROM TABLE_Reponse;",null);
     }
+    public Cursor getLieu() { return db.rawQuery("SELECT COL_LIEU FROM TABLE_Lieu;",null); }
 
 }
