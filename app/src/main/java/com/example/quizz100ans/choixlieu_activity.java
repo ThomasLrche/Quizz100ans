@@ -19,8 +19,7 @@ import java.util.List;
 public class choixlieu_activity extends AppCompatActivity {
 
     Spinner spinner;
-    private String recupville;
-    private String recupid;
+    private String monLieu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +56,7 @@ public class choixlieu_activity extends AppCompatActivity {
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String monLieu = String.valueOf(spinner.getSelectedItem());
-                //recupid = spinner.getSelectedItemId();
-                recupville = monLieu;
-
-
+                monLieu = String.valueOf(spinner.getSelectedItem());
             }
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -75,7 +70,7 @@ public class choixlieu_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =(new Intent(choixlieu_activity.this, Questions_activity.class));
-                intent.putExtra("recup",recupville);
+                intent.putExtra("monLieu",monLieu);
                 startActivity(intent);
             }
         });

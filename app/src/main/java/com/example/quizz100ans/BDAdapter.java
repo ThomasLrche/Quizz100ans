@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class BDAdapter {
 
-    static final int VERSION_BDD =15;
+    static final int VERSION_BDD =17;
     private static final String BDDQUIZZ = "quizz_bdd";
     static final String TABLE_Lieu = "TABLE_Lieu";
     static final String TABLE_Question = "TABLE_Question";
@@ -24,7 +24,7 @@ public class BDAdapter {
     static final int NUM_COL_QuestID = 2;
     static final String QUEST = "Question";
     static final int NUM_COL_Quest = 3;
-    static final String ID_LIEU = "id_lieu";
+    static final String NOM_LIEU = "Nom_Lieu";
     static final int NUM_COL_ID_LIEU = 4;
 
     //Reponse
@@ -79,7 +79,7 @@ public class BDAdapter {
         //on lui ajoute une valeur associé à une clé (qui est le nom de la colonne où on veut mettre la valeur)
         values.put(QUEST_ID, uneQuestion.getId_question());
         values.put(QUEST, uneQuestion.getQuestion());
-        values.put(ID_LIEU, uneQuestion.getId_lieu());
+        values.put(NOM_LIEU, uneQuestion.getNom_lieu());
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_Question, null, values);
     }
@@ -115,8 +115,10 @@ public class BDAdapter {
     }
     public Cursor getQuestions() { return db.rawQuery("SELECT * FROM TABLE_Question INNER JOIN TABLE_Lieu ON TABLE_Question.id_lieu = TABLE_Lieu._id WHERE id_lieu = TABLE_Lieu._id ;",null);}
 
-    public Cursor getQuestion(String Lieu ) {
-        return db.rawQuery("SELECT QUEST FROM TABLE_Question INNER JOIN TABLE_Lieu ON TABLE_Question.id_lieu=TABLE_Lieu._id WHERE "+ COL_LIEU+ " = " + Lieu + ";",null);
+
+
+    public Cursor getQuestion(String Lieu) {
+        return db.rawQuery("SELECT * FROM TABLE_Question WHERE NOM_LIEU =" + Lieu + ";",null);
     }
 
 }

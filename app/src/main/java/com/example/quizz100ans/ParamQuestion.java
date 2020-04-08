@@ -4,14 +4,14 @@ public class ParamQuestion {
 
     protected String id_question;
     protected String question;
-    protected String id_lieu;
+    protected String nom_lieu;
 
     //contructeur paramétré
-    public ParamQuestion (String unidquestion, String idQuestion,String unidlieu){
+    public ParamQuestion (String unidquestion, String idQuestion,String nomLieu){
         super();
         this.id_question=unidquestion;
         this.question=idQuestion;
-        this.id_lieu=unidlieu;
+        this.nom_lieu=nomLieu;
     }
 
     public String getId_question() {
@@ -30,11 +30,7 @@ public class ParamQuestion {
         this.question = question;
     }
 
-    public String getId_lieu() {
-        return id_lieu;
-    }
+    public String getNom_lieu() { return nom_lieu; }
 
-    public void setId_lieu(String id_lieu) {
-        this.id_lieu = id_lieu;
-    }
+    public void setNom_lieu(String nom_lieu) { this.nom_lieu = nom_lieu; }
 }

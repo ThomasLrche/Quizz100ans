@@ -104,11 +104,11 @@ public class MainActivity extends AppCompatActivity {
         BDAdapter ReleverBdd = new BDAdapter(this);
 
         //Création de Relever Temps
-        ParamQuestion quest1 = new ParamQuestion( "1", Question1,"1");
-        ParamQuestion quest2 = new ParamQuestion( "2", Question2,"1");
-        ParamQuestion quest3 = new ParamQuestion( "3", Question3,"2");
-        ParamQuestion quest4 = new ParamQuestion( "4", Question4,"3");
-        ParamQuestion quest5 = new ParamQuestion( "5", Question5,"4");
+        ParamQuestion quest1 = new ParamQuestion( "1", Question1,"Nantes");
+        ParamQuestion quest2 = new ParamQuestion( "2", Question2,"Nantes");
+        ParamQuestion quest3 = new ParamQuestion( "3", Question3,"Joliverie");
+        ParamQuestion quest4 = new ParamQuestion( "4", Question4,"StJoseph");
+        ParamQuestion quest5 = new ParamQuestion( "5", Question5,"StPierre");
 
         ReleverBdd.open();
         //On insère les articles que l'on vient de créer
