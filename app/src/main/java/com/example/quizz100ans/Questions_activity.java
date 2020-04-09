@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +18,9 @@ import java.util.ArrayList;
 public class Questions_activity extends AppCompatActivity {
 
     private String Lieu;
+    private String laQuestion;
     protected ArrayList<String> listeQuestions = new ArrayList<>();
+    protected ArrayList<String> listeReponses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +34,38 @@ public class Questions_activity extends AppCompatActivity {
 
         //On ouvre la base de données pour écrire dedans
         QuestionsBdd.open();
-        Cursor cursor = QuestionsBdd.getQuestion(Lieu);
+        Cursor cursorQuest = QuestionsBdd.getQuestion(Lieu);
 
-        if(cursor.getCount() > 0) {
-            while(cursor.moveToNext()) {
-                listeQuestions.add(cursor.getString(cursor.getColumnIndex("Question")));
+        if(cursorQuest.getCount() > 0) {
+            while(cursorQuest.moveToNext()) {
+                listeQuestions.add(cursorQuest.getString(cursorQuest.getColumnIndex("Question")));
             }
         }
+
+
+        for(int a=0;a<listeQuestions.size();a++) {
+            laQuestion = listeQuestions.get(a);
+        }
+        Cursor cursorReponses = QuestionsBdd.getReponses(laQuestion);
+
+        if(cursorReponses.getCount() > 0) {
+            while(cursorReponses.moveToNext()) {
+                listeReponses.add(cursorReponses.getString(cursorReponses.getColumnIndex("reponse1" + "reponse2" + "reponse3" + "bonnereponse")));
+            }
+        }
+
         QuestionsBdd.close();
+
+
 
         //création d'un écouteur pour le bouton
         Button btnValider = findViewById(R.id.buttonValiderQuestion);
         TextView textquestion = findViewById(R.id.textView2);
         TextView Question = findViewById(R.id.textView6);
+        RadioButton reponse1 = findViewById(R.id.radioButton5);
 
         textquestion.setText(listeQuestions.toString());
+        reponse1.setText(listeReponses.toString());
 
         //for (int i = 0;i<listeQuestions.size();i++) {
         //    textquestion.setText(listeQuestions.get(i));

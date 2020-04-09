@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class BDAdapter {
 
-    static final int VERSION_BDD =17;
+    static final int VERSION_BDD =21;
     private static final String BDDQUIZZ = "quizz_bdd";
     static final String TABLE_Lieu = "TABLE_Lieu";
     static final String TABLE_Question = "TABLE_Question";
@@ -38,7 +38,7 @@ public class BDAdapter {
     static final int NUM_COL_REP3 = 8;
     static final String BONNEREPONSE = "bonnereponse";
     static final int NUM_COL_REP4 = 9;
-    static final String IDQuestion = "idquestion";
+    static final String NOMQuestion = "Question";
     static final int NUM_COL_IDQUEST = 10;
 
 
@@ -93,7 +93,7 @@ public class BDAdapter {
         values.put(REPONSE2, unereponse.getReponse2());
         values.put(REPONSE3, unereponse.getReponse3());
         values.put(BONNEREPONSE, unereponse.getQuestionreponse());
-        values.put(IDQuestion, unereponse.getIdquestion());
+        values.put(NOMQuestion, unereponse.getNomquestion());
 
         //on insère l'objet dans la BDD via le ContentValues
         return db.insert(TABLE_Reponse, null, values);
@@ -107,18 +107,17 @@ public class BDAdapter {
     public Cursor getTableLieu() {
         return db.rawQuery("SELECT * FROM TABLE_Lieu;",null);
     }
-    public Cursor getTableQuestion() {
-        return db.rawQuery("SELECT * FROM TABLE_Question;",null);
-    }
+
     public Cursor getTableReponse() {
         return db.rawQuery("SELECT * FROM TABLE_Reponse;",null);
     }
-    public Cursor getQuestions() { return db.rawQuery("SELECT * FROM TABLE_Question INNER JOIN TABLE_Lieu ON TABLE_Question.id_lieu = TABLE_Lieu._id WHERE id_lieu = TABLE_Lieu._id ;",null);}
-
-
 
     public Cursor getQuestion(String Lieu) {
         return db.rawQuery("SELECT * FROM TABLE_Question WHERE " + NOM_LIEU + " = '" + Lieu + "';",null);
+    }
+
+    public Cursor getReponses(String Question) {
+        return db.rawQuery("SELECT * FROM TABLE_Reponse WHERE " + NOMQuestion + " = '" + Question + "';",null);
     }
 
 }

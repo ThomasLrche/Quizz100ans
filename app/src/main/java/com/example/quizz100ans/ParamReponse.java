@@ -7,18 +7,18 @@ public class ParamReponse {
     protected String reponse2;
     protected String reponse3;
     protected String questionreponse;
-    protected String idquestion;
+    protected String nomquestion;
 
 
     //contructeur paramétré
-    public ParamReponse (String unidrep, String idrep1, String idrep2, String idrep3,String questrep,String idquest){
+    public ParamReponse (String unidrep, String idrep1, String idrep2, String idrep3,String questrep,String question){
         super();
         this.id_question=unidrep;
         this.reponse1=idrep1;
         this.reponse2=idrep2;
         this.reponse3=idrep3;
         this.questionreponse=questrep;
-        this.idquestion=idquest;
+        this.nomquestion=question;
     }
 
     public String getId_question() {
@@ -57,15 +57,9 @@ public class ParamReponse {
         return questionreponse;
     }
 
-    public void setQuestionreponse(String questionreponse) {
-        this.questionreponse = questionreponse;
-    }
+    public void setQuestionreponse(String questionreponse) { this.questionreponse = questionreponse; }
 
-    public String getIdquestion() {
-        return idquestion;
-    }
+    public String getNomquestion() { return nomquestion; }
 
-    public void setIdquestion(String idquestion) {
-        this.idquestion = idquestion;
-    }
+    public void setNomquestion(String nomquestion) { this.nomquestion = nomquestion; }
 }

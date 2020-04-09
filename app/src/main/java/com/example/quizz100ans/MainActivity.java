@@ -126,11 +126,11 @@ public class MainActivity extends AppCompatActivity {
         BDAdapter ReleverBdd = new BDAdapter(this);
 
         //Création de Relever Temps
-        ParamReponse Reponse = new ParamReponse( "1",Reponse1_1 ,Reponse1_2 ,Reponse1_3 ,Reponsecorrect ,"1");
-        ParamReponse Reponse1 = new ParamReponse( "2",Reponse2_1  ,Reponse2_2  ,Reponse2_3  ,Reponsecorrect1  ,"1");
-        ParamReponse Reponse2 = new ParamReponse( "3",Reponse3_1  ,Reponse3_2  ,Reponse3_3  ,Reponsecorrect2  ,"2");
-        ParamReponse Reponse3 = new ParamReponse( "4",Reponse4_1  ,Reponse4_2  ,Reponse4_3  ,Reponsecorrect3  ,"3");
-        ParamReponse Reponse4 = new ParamReponse( "5",Reponse5_1  ,Reponse5_2  ,Reponse5_3  ,Reponsecorrect4  ,"4");
+        ParamReponse Reponse = new ParamReponse( "1",Reponse1_1 ,Reponse1_2 ,Reponse1_3 ,Reponsecorrect ,"Question1");
+        ParamReponse Reponse1 = new ParamReponse( "2",Reponse2_1  ,Reponse2_2  ,Reponse2_3  ,Reponsecorrect1  ,"Question2");
+        ParamReponse Reponse2 = new ParamReponse( "3",Reponse3_1  ,Reponse3_2  ,Reponse3_3  ,Reponsecorrect2  ,"Question2");
+        ParamReponse Reponse3 = new ParamReponse( "4",Reponse4_1  ,Reponse4_2  ,Reponse4_3  ,Reponsecorrect3  ,"Question4");
+        ParamReponse Reponse4 = new ParamReponse( "5",Reponse5_1  ,Reponse5_2  ,Reponse5_3  ,Reponsecorrect4  ,"Question5");
 
         ReleverBdd.open();
         //On insère les articles que l'on vient de créer

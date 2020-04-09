@@ -25,7 +25,7 @@ public class BddQUIZZ extends SQLiteOpenHelper {
     private static final String REPONSE2 = "reponse2";
     private static final String REPONSE3 = "reponse3";
     private static final String BONNEREPONSE = "bonnereponse";
-    private static final String IDQuestion = "idquestion";
+    private static final String NOMQuestion = "Nom_Question";
 
 
 
@@ -35,7 +35,7 @@ public class BddQUIZZ extends SQLiteOpenHelper {
     //Création de la table Question
     private static final String CREATE_BDD_Question = "CREATE TABLE " + TABLE_Question + " ("+ QUEST_ID +" INTEGER PRIMARY KEY AUTOINCREMENT,"+ QUEST + " TEXT NOT NULL,"+ NOM_LIEU +" TEXT NOT NULL);";
     //Création de la table Reponse
-    private static final String CREATE_BDD_Reponse = "CREATE TABLE " + TABLE_Reponse + " ("+REP_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ REPONSE1 + " TEXT NOT NULL,"+ REPONSE2 + " TEXT NOT NULL,"+ REPONSE3 + " TEXT NOT NULL,"+BONNEREPONSE+" TEXT NOT NULL,"+IDQuestion+" TEXT NOT NULL);";
+    private static final String CREATE_BDD_Reponse = "CREATE TABLE " + TABLE_Reponse + " ("+REP_ID+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ REPONSE1 + " TEXT NOT NULL,"+ REPONSE2 + " TEXT NOT NULL,"+ REPONSE3 + " TEXT NOT NULL,"+BONNEREPONSE+" TEXT NOT NULL,"+NOMQuestion+" TEXT NOT NULL);";
 
 
 
