@@ -44,7 +44,12 @@ public class Questions_activity extends AppCompatActivity {
         Button btnValider = findViewById(R.id.buttonValiderQuestion);
         TextView textquestion = findViewById(R.id.textView2);
         TextView Question = findViewById(R.id.textView6);
-        textquestion.setText((CharSequence) listeQuestions);
+
+        textquestion.setText(listeQuestions.toString());
+
+        //for (int i = 0;i<listeQuestions.size();i++) {
+        //    textquestion.setText(listeQuestions.get(i));
+        //}
 
         //bdd();
 

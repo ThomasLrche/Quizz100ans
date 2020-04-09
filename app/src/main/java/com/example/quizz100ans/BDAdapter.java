@@ -118,7 +118,7 @@ public class BDAdapter {
 
 
     public Cursor getQuestion(String Lieu) {
-        return db.rawQuery("SELECT * FROM TABLE_Question WHERE NOM_LIEU =" + Lieu + ";",null);
+        return db.rawQuery("SELECT * FROM TABLE_Question WHERE " + NOM_LIEU + " = '" + Lieu + "';",null);
     }
 
 }

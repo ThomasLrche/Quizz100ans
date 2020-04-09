@@ -17,17 +17,17 @@ public class MainActivity extends AppCompatActivity {
     private String Lieu_5="StSébastien";
 
     //Données Question
-    private String Question1 ="Que fête la joliverie";
-    private String Question2 ="3+2=";
-    private String Question3 ="1+1=";
-    private String Question4 ="0+0=";
-    private String Question5 ="5+5=";
+    private String Question1 ="Question1";
+    private String Question2 ="Question2";
+    private String Question3 ="Question3";
+    private String Question4 ="Question4";
+    private String Question5 ="Question5";
 
     //Données Reponse
-    private String Reponsecorrect ="5";
-    private String Reponse1_1 ="test";
-    private String Reponse1_2 ="test2";
-    private String Reponse1_3 ="test3";
+    private String Reponsecorrect ="Reponsecorrect";
+    private String Reponse1_1 ="reponse1";
+    private String Reponse1_2 ="reponse2";
+    private String Reponse1_3 ="reponse3";
 
     private String Reponsecorrect1 ="2";
     private String Reponse2_1 ="test";
