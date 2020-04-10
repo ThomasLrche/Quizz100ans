@@ -47,25 +47,25 @@
             android:layout_weight="1">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/quest1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/quest2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton" />
 
             <RadioButton
-                android:id="@+id/radioButton7"
+                android:id="@+id/quest3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton" />
 
             <RadioButton
-                android:id="@+id/radioButton8"
+                android:id="@+id/quest4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="RadioButton" />

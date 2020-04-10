@@ -25,7 +25,7 @@ public class BddQUIZZ extends SQLiteOpenHelper {
     private static final String REPONSE2 = "reponse2";
     private static final String REPONSE3 = "reponse3";
     private static final String BONNEREPONSE = "bonnereponse";
-    private static final String NOMQuestion = "Nom_Question";
+    private static final String NOMQuestion = "Question";
 
 
 

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class BDAdapter {
 
-    static final int VERSION_BDD =21;
+    static final int VERSION_BDD =27;
     private static final String BDDQUIZZ = "quizz_bdd";
     static final String TABLE_Lieu = "TABLE_Lieu";
     static final String TABLE_Question = "TABLE_Question";
@@ -39,7 +39,7 @@ public class BDAdapter {
     static final String BONNEREPONSE = "bonnereponse";
     static final int NUM_COL_REP4 = 9;
     static final String NOMQuestion = "Question";
-    static final int NUM_COL_IDQUEST = 10;
+    static final int NUM_COL_QUEST= 10;
 
 
     private BddQUIZZ bdAdapter;
