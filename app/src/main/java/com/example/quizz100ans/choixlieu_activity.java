@@ -20,6 +20,9 @@ public class choixlieu_activity extends AppCompatActivity {
 
     Spinner spinner;
     private String monLieu;
+    private int NbQuest;
+    private List spinnerList = new ArrayList();
+    private BDAdapter LieuxBdd = new BDAdapter(choixlieu_activity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,19 +32,13 @@ public class choixlieu_activity extends AppCompatActivity {
         //Récupération du Spinner
         spinner = (Spinner) findViewById(R.id.spinner);
 
-        //Création d'une liste d'éléments à mettre dans le Spinner
-        List spinnerList = new ArrayList();
-        final List spinnerId = new ArrayList();
-
-        BDAdapter LieuxBdd = new BDAdapter(choixlieu_activity.this);
-
         //On ouvre la base de données pour écrire dedans
         LieuxBdd.open();
-        Cursor cursor = LieuxBdd.getTableLieu();
+        Cursor cursorLieux = LieuxBdd.getTableLieu();
 
-        if(cursor.getCount() > 0) {
-            while(cursor.moveToNext()) {
-                spinnerList.add(cursor.getString(cursor.getColumnIndex("Lieu")));
+        if(cursorLieux.getCount() > 0) {
+            while(cursorLieux.moveToNext()) {
+                spinnerList.add(cursorLieux.getString(cursorLieux.getColumnIndex("Lieu")));
             }
         }
         LieuxBdd.close();
@@ -69,9 +66,23 @@ public class choixlieu_activity extends AppCompatActivity {
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =(new Intent(choixlieu_activity.this, Questions_activity.class));
-                intent.putExtra("monLieu",monLieu);
-                startActivity(intent);
+
+                LieuxBdd.open();
+                Cursor cursorNbQuest = LieuxBdd.getNbQuestion(monLieu);
+
+                if(cursorNbQuest.getCount() > 0) {
+                    while(cursorNbQuest.moveToNext()) {
+                       NbQuest = Integer.parseInt(cursorNbQuest.getString(cursorNbQuest.getColumnIndex("Lieu")));
+                    }
+                }
+                LieuxBdd.close();
+
+                for(int j=0;j<NbQuest;j++) {
+                    Intent intent = (new Intent(choixlieu_activity.this, Questions_activity.class));
+                    intent.putExtra("monLieu", monLieu);
+                    intent.putExtra("IndexQuest", j);
+                    startActivity(intent);
+                }
             }
         });
     }

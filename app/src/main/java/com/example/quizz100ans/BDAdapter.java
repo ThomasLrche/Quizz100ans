@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class BDAdapter {
 
-    static final int VERSION_BDD =27;
+    static final int VERSION_BDD =29;
     private static final String BDDQUIZZ = "quizz_bdd";
     static final String TABLE_Lieu = "TABLE_Lieu";
     static final String TABLE_Question = "TABLE_Question";
@@ -116,8 +116,11 @@ public class BDAdapter {
         return db.rawQuery("SELECT * FROM TABLE_Question WHERE " + NOM_LIEU + " = '" + Lieu + "';",null);
     }
 
+    public Cursor getNbQuestion(String Lieu) {
+        return db.rawQuery("SELECT COUNT(*) FROM TABLE_Question WHERE " + NOM_LIEU + " = '" + Lieu + "';",null);
+    }
+
     public Cursor getReponses(String Question) {
         return db.rawQuery("SELECT * FROM TABLE_Reponse WHERE " + NOMQuestion + " = '" + Question + "';",null);
     }
-
 }

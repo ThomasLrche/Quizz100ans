@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class Questions_activity extends AppCompatActivity {
 
     private String Lieu;
+    private int IndexQ;
     private String laQuestion;
     protected ArrayList<String> listeQuestions = new ArrayList<>();
     protected ArrayList<String> listeReponses1 = new ArrayList<>();
@@ -32,6 +33,7 @@ public class Questions_activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Lieu = intent.getStringExtra("monLieu");
+        IndexQ = Integer.parseInt(intent.getStringExtra("IndexQuest"));
 
         BDAdapter QuestionsBdd = new BDAdapter(Questions_activity.this);
 
@@ -45,10 +47,10 @@ public class Questions_activity extends AppCompatActivity {
             }
         }
 
-
-        for(int a=0;a<listeQuestions.size();a++) {
-            laQuestion = listeQuestions.get(a);
+        while(listeQuestions.size()>IndexQ){
+            laQuestion = listeQuestions.get(IndexQ);
         }
+
         Cursor cursorReponses = QuestionsBdd.getReponses(laQuestion);
 
         if(cursorReponses.getCount() > 0) {
