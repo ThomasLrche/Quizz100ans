@@ -67,7 +67,7 @@ public class choixlieu_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                LieuxBdd.open();
+              /*  LieuxBdd.open();
                 Cursor cursorNbQuest = LieuxBdd.getNbQuestion(monLieu);
 
                 if(cursorNbQuest.getCount() > 0) {
@@ -75,14 +75,14 @@ public class choixlieu_activity extends AppCompatActivity {
                        NbQuest = Integer.parseInt(cursorNbQuest.getString(cursorNbQuest.getColumnIndex("Lieu")));
                     }
                 }
-                LieuxBdd.close();
+                LieuxBdd.close();*/
 
-                for(int j=0;j<NbQuest;j++) {
+               // for(int j=0;j<NbQuest;j++) {
                     Intent intent = (new Intent(choixlieu_activity.this, Questions_activity.class));
                     intent.putExtra("monLieu", monLieu);
-                    intent.putExtra("IndexQuest", j);
+                   // intent.putExtra("IndexQuest", j);
                     startActivity(intent);
-                }
+              //  }
             }
         });
     }

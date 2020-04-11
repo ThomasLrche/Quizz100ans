@@ -33,7 +33,7 @@ public class Questions_activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Lieu = intent.getStringExtra("monLieu");
-        IndexQ = Integer.parseInt(intent.getStringExtra("IndexQuest"));
+       // IndexQ = Integer.parseInt(intent.getStringExtra("IndexQuest"));
 
         BDAdapter QuestionsBdd = new BDAdapter(Questions_activity.this);
 
@@ -47,9 +47,9 @@ public class Questions_activity extends AppCompatActivity {
             }
         }
 
-        while(listeQuestions.size()>IndexQ){
+        /*while(listeQuestions.size()>IndexQ){
             laQuestion = listeQuestions.get(IndexQ);
-        }
+        }*/
 
         Cursor cursorReponses = QuestionsBdd.getReponses(laQuestion);
 
