@@ -20,9 +20,12 @@ public class choixlieu_activity extends AppCompatActivity {
 
     Spinner spinner;
     private String monLieu;
-    private int NbQuest;
+    private int NbQuest =0;
+    private String NbQuest1;
     private List spinnerList = new ArrayList();
+    private List recupnbQuestion = new ArrayList();
     private BDAdapter LieuxBdd = new BDAdapter(choixlieu_activity.this);
+    private BDAdapter NbQuestionBdd = new BDAdapter(choixlieu_activity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,22 +70,27 @@ public class choixlieu_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-              /*  LieuxBdd.open();
-                Cursor cursorNbQuest = LieuxBdd.getNbQuestion(monLieu);
+                NbQuestionBdd.open();
+                Cursor cursorQuest = NbQuestionBdd.getNbQuestion(monLieu);
 
-                if(cursorNbQuest.getCount() > 0) {
-                    while(cursorNbQuest.moveToNext()) {
-                       NbQuest = Integer.parseInt(cursorNbQuest.getString(cursorNbQuest.getColumnIndex("Lieu")));
+                if(cursorQuest.getCount() > 0) {
+                    while(cursorQuest.moveToNext()) {
+                        recupnbQuestion.add(cursorQuest.getString(cursorQuest.getColumnIndex("Question")));
                     }
                 }
-                LieuxBdd.close();*/
 
-               // for(int j=0;j<NbQuest;j++) {
+                NbQuestionBdd.close();
+
+                for (int i=0; i < recupnbQuestion.size();i++){
+                    NbQuest = NbQuest +1 ;
+                }
+
+                for(int j=0;j<NbQuest;j++) {
                     Intent intent = (new Intent(choixlieu_activity.this, Questions_activity.class));
                     intent.putExtra("monLieu", monLieu);
-                   // intent.putExtra("IndexQuest", j);
+                    intent.putExtra("IndexQuest", j);
                     startActivity(intent);
-              //  }
+                }
             }
         });
     }

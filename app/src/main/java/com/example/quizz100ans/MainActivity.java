@@ -17,37 +17,37 @@ public class MainActivity extends AppCompatActivity {
     private String Lieu_5="StSébastien";
 
     //Données Question
-    private String Question1 ="Question1";
-    private String Question2 ="Question2";
-    private String Question3 ="Question3";
-    private String Question4 ="Question4";
-    private String Question5 ="Question5";
+    private String Question1 ="Quelle est la capitale de la France";
+    private String Question2 ="Quel est le plus grand pays du Monde";
+    private String Question3 ="Quel est le plus petit pays du Monde";
+    private String Question4 ="Quel est le pays le plus peuplé du Monde";
+    private String Question5 ="Quel est la capital du Japon";
 
     //Données Reponse
-    private String Reponsecorrect ="Reponsecorrect";
-    private String Reponse1_1 ="reponse1";
-    private String Reponse1_2 ="reponse2";
-    private String Reponse1_3 ="reponse3";
+    private String Reponsecorrect ="Paris";
+    private String Reponse1_1 ="Tokyo";
+    private String Reponse1_2 ="Nantes";
+    private String Reponse1_3 ="Londres";
 
-    private String Reponsecorrect1 ="2";
-    private String Reponse2_1 ="test";
-    private String Reponse2_2 ="test2";
-    private String Reponse2_3 ="test3";
+    private String Reponsecorrect1 ="Russie";
+    private String Reponse2_1 ="Australie";
+    private String Reponse2_2 ="Etats-Unis";
+    private String Reponse2_3 ="France";
 
-    private String Reponsecorrect2 ="2";
-    private String Reponse3_1 ="test";
-    private String Reponse3_2 ="test2";
-    private String Reponse3_3 ="test3";
+    private String Reponsecorrect2 ="Vatican";
+    private String Reponse3_1 ="Luxembourg";
+    private String Reponse3_2 ="Suisse";
+    private String Reponse3_3 ="Chili";
 
-    private String Reponsecorrect3 ="2";
-    private String Reponse4_1 ="test";
-    private String Reponse4_2 ="test2";
-    private String Reponse4_3 ="test3";
+    private String Reponsecorrect3 ="Chine";
+    private String Reponse4_1 ="Espagne";
+    private String Reponse4_2 ="Russie";
+    private String Reponse4_3 ="Inde";
 
-    private String Reponsecorrect4 ="2";
-    private String Reponse5_1 ="test";
-    private String Reponse5_2 ="test2";
-    private String Reponse5_3 ="test3";
+    private String Reponsecorrect4 ="Tokyo";
+    private String Reponse5_1 ="Pekin";
+    private String Reponse5_2 ="Madrid";
+    private String Reponse5_3 ="Marseille";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,11 +130,11 @@ public class MainActivity extends AppCompatActivity {
         BDAdapter ReleverBdd = new BDAdapter(this);
 
         //Création de Relever Temps
-        ParamReponse Reponse = new ParamReponse( "1",Reponse1_1 ,Reponse1_2 ,Reponse1_3 ,Reponsecorrect ,"Question1");
-        ParamReponse Reponse1 = new ParamReponse( "2",Reponse2_1  ,Reponse2_2  ,Reponse2_3  ,Reponsecorrect1  ,"Question2");
-        ParamReponse Reponse2 = new ParamReponse( "3",Reponse3_1  ,Reponse3_2  ,Reponse3_3  ,Reponsecorrect2  ,"Question2");
-        ParamReponse Reponse3 = new ParamReponse( "4",Reponse4_1  ,Reponse4_2  ,Reponse4_3  ,Reponsecorrect3  ,"Question4");
-        ParamReponse Reponse4 = new ParamReponse( "5",Reponse5_1  ,Reponse5_2  ,Reponse5_3  ,Reponsecorrect4  ,"Question5");
+        ParamReponse Reponse = new ParamReponse( "1",Reponse1_1 ,Reponse1_2 ,Reponse1_3 ,Reponsecorrect ,"Quelle est la capitale de la France");
+        ParamReponse Reponse1 = new ParamReponse( "2",Reponse2_1  ,Reponse2_2  ,Reponse2_3  ,Reponsecorrect1  ,Question2);
+        ParamReponse Reponse2 = new ParamReponse( "3",Reponse3_1  ,Reponse3_2  ,Reponse3_3  ,Reponsecorrect2  ,Question3);
+        ParamReponse Reponse3 = new ParamReponse( "4",Reponse4_1  ,Reponse4_2  ,Reponse4_3  ,Reponsecorrect3  ,Question4);
+        ParamReponse Reponse4 = new ParamReponse( "5",Reponse5_1  ,Reponse5_2  ,Reponse5_3  ,Reponsecorrect4  ,Question5);
 
         ReleverBdd.open();
         //On insère les articles que l'on vient de créer
