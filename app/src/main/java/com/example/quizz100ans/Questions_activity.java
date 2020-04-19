@@ -26,6 +26,7 @@ public class Questions_activity extends AppCompatActivity {
     private RadioButton reponse3;
     private RadioButton reponse4;
     private String Lieu;
+    private int indexQuest;
     private String laQuestion;
     private String Unereponse1;
     private String Unereponse2;
@@ -54,6 +55,7 @@ public class Questions_activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Lieu = intent.getStringExtra("monLieu");
+        indexQuest = Integer.parseInt(intent.getStringExtra("IndexQuest"));
 
         BDAdapter QuestionsBdd = new BDAdapter(Questions_activity.this);
         BDAdapter test = new BDAdapter(Questions_activity.this);
@@ -69,10 +71,14 @@ public class Questions_activity extends AppCompatActivity {
             }
         }
 
-        for(int a=0;a<listeQuestions.size();a++) {
-            laQuestion = listeQuestions.get(a);
-            Log.d("test",laQuestion);
+        while(indexQuest<listeQuestions.size()){
+            laQuestion = listeQuestions.get(indexQuest);
         }
+
+        //for(int a=0;a<listeQuestions.size();a++) {
+        //    laQuestion = listeQuestions.get(a);
+        //    Log.d("test",laQuestion);
+        //}
         test.open();
         Cursor test1 = test.getReponses(laQuestion);
 
@@ -122,9 +128,11 @@ public class Questions_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int selectId = ReponseQuest.getCheckedRadioButtonId();
-                if(reponse4.isSelected()){
 
-                }
+                Intent intent = (new Intent(Questions_activity.this, choixlieu_activity.class));
+                indexQuest = indexQuest + 1;
+                intent.putExtra("j", indexQuest);
+
                 //if lieu a encore une question alors
                 //startActivity(new Intent(Questions_activity.this, Questions_activity.class));
                 //if lieu n'a pu de question alors

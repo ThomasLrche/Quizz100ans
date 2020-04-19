@@ -20,6 +20,7 @@ public class choixlieu_activity extends AppCompatActivity {
 
     Spinner spinner;
     private String monLieu;
+    private int j = 0;
     private int NbQuest =0;
     private String NbQuest1;
     private List spinnerList = new ArrayList();
@@ -31,6 +32,8 @@ public class choixlieu_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lieu);
+
+        Intent intent = getIntent();
 
         //Récupération du Spinner
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -85,12 +88,19 @@ public class choixlieu_activity extends AppCompatActivity {
                     NbQuest = NbQuest +1 ;
                 }
 
-                for(int j=0;j<NbQuest;j++) {
+                while(j<NbQuest) {
                     Intent intent = (new Intent(choixlieu_activity.this, Questions_activity.class));
                     intent.putExtra("monLieu", monLieu);
                     intent.putExtra("IndexQuest", j);
                     startActivity(intent);
+
+                    Intent intentQuest = getIntent();
+                    String indexQuest = intentQuest.getStringExtra("j");
+                    if (indexQuest != null) {
+                        j = Integer.parseInt(indexQuest);
+                    }
                 }
+
             }
         });
     }
