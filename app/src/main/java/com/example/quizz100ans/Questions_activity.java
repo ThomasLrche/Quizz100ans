@@ -1,19 +1,19 @@
 package com.example.quizz100ans;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -26,8 +26,6 @@ public class Questions_activity extends AppCompatActivity {
     private RadioButton reponse3;
     private RadioButton reponse4;
     private String Lieu;
-    private int indexQuest;
-    private String laQuestion;
     private String Unereponse1;
     private String Unereponse2;
     private String Unereponse3;
@@ -46,16 +44,14 @@ public class Questions_activity extends AppCompatActivity {
         //création d'un écouteur pour le bouton
         Button btnValider = findViewById(R.id.buttonValiderQuestion);
         TextView textquestion = findViewById(R.id.textView2);
-        TextView Question = findViewById(R.id.textView6);
         reponse1 = findViewById(R.id.quest1);
         reponse2 = findViewById(R.id.quest2);
         reponse3 = findViewById(R.id.quest3);
         reponse4 = findViewById(R.id.quest4);
         ReponseQuest = findViewById(R.id.questiongrp);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         Lieu = intent.getStringExtra("monLieu");
-        indexQuest = Integer.parseInt(intent.getStringExtra("IndexQuest"));
 
         BDAdapter QuestionsBdd = new BDAdapter(Questions_activity.this);
         BDAdapter test = new BDAdapter(Questions_activity.this);
@@ -71,16 +67,8 @@ public class Questions_activity extends AppCompatActivity {
             }
         }
 
-        while(indexQuest<listeQuestions.size()){
-            laQuestion = listeQuestions.get(indexQuest);
-        }
-
-        //for(int a=0;a<listeQuestions.size();a++) {
-        //    laQuestion = listeQuestions.get(a);
-        //    Log.d("test",laQuestion);
-        //}
         test.open();
-        Cursor test1 = test.getReponses(laQuestion);
+        Cursor test1 = test.getReponses(getLaQuestion(choixlieu_activity.getIndexQuest()));
 
         if(test1.getCount() > 0) {
             while(test1.moveToNext()) {
@@ -98,30 +86,14 @@ public class Questions_activity extends AppCompatActivity {
             Log.d("test",Unereponse1);
         }
 
-
-
         QuestionsBdd.close();
         test1.close();
 
-
-
-
-
-
-
-        textquestion.setText(laQuestion);
+        textquestion.setText(getLaQuestion(choixlieu_activity.getIndexQuest()));
         reponse1.setText(Unereponse1);
         reponse2.setText(Unereponse2);
         reponse3.setText(Unereponse3);
         reponse4.setText(Unereponse4);
-
-
-        //for (int i = 0;i<listeQuestions.size();i++) {
-        //    textquestion.setText(listeQuestions.get(i));
-        //}
-
-        //bdd();
-
 
 
         btnValider.setOnClickListener(new View.OnClickListener() {
@@ -129,17 +101,26 @@ public class Questions_activity extends AppCompatActivity {
             public void onClick(View v) {
                 int selectId = ReponseQuest.getCheckedRadioButtonId();
 
-                Intent intent = (new Intent(Questions_activity.this, choixlieu_activity.class));
-                indexQuest = indexQuest + 1;
-                intent.putExtra("j", indexQuest);
+                choixlieu_activity.setIndexQuest(choixlieu_activity.getIndexQuest() + 1);
 
-                //if lieu a encore une question alors
-                //startActivity(new Intent(Questions_activity.this, Questions_activity.class));
-                //if lieu n'a pu de question alors
-                startActivity(new Intent(Questions_activity.this, choixlieu_activity.class));
+                if(choixlieu_activity.getIndexQuest()<listeQuestions.size()) {
+                    reload();
+                } else {
+                    choixlieu_activity.setIndexQuest(0);
+                    startActivity(new Intent(Questions_activity.this, choixlieu_activity.class));
+                }
             }
         });
     }
+
+    public String getLaQuestion(int indexQuestion){
+        String laQuestion = null;
+        if(indexQuestion<listeQuestions.size()){
+            laQuestion = listeQuestions.get(choixlieu_activity.getIndexQuest());
+        }
+        return laQuestion;
+    }
+
     public void bdd(){
 
         BDAdapter ReleveBdd = new BDAdapter(Questions_activity.this);
@@ -151,6 +132,12 @@ public class Questions_activity extends AppCompatActivity {
 
         //Question.setAdapter(adapter);
 
+    }
+
+    public void reload() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
 }
