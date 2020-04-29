@@ -117,9 +117,17 @@ public class Questions_activity extends AppCompatActivity {
                     reload();
                 } else {
                     choixlieu_activity.setIndexQuest(0);
-                    Intent intent = (new Intent(Questions_activity.this, choixlieu_activity.class));
-                    intent.putExtra("Score", Score);
-                    startActivity(intent);
+                    choixlieu_activity.setLieuxDejaFait(Lieu);
+
+                    if(choixlieu_activity.spinnerList.size() == 1){
+                        Intent intent = (new Intent(Questions_activity.this, score_activity.class));
+                        intent.putExtra("Score", Score);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = (new Intent(Questions_activity.this, choixlieu_activity.class));
+                        intent.putExtra("Score", Score);
+                        startActivity(intent);
+                    }
                 }
             }
         });

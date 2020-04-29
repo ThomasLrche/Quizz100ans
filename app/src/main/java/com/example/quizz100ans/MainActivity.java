@@ -6,8 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText usernameLabel;
+    private static String username;
 
     //Données Lieu
     private String Lieu_1="Nantes";
@@ -61,15 +65,17 @@ public class MainActivity extends AppCompatActivity {
         Button btnValider = findViewById(R.id.buttonValiderMenu);
         Button btnTestBdd = findViewById(R.id.buttonQuitter);
 
+        usernameLabel = findViewById(R.id.editTextPseudo);
+        username = usernameLabel.getText().toString();
+
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, choixlieu_activity.class));
+                Intent intent = (new Intent(MainActivity.this, choixlieu_activity.class));
+                intent.putExtra("Username", username);
+                startActivity(intent);
             }
         });
-
-
-
     }
 
     // Lors du  clique sur bouton exit, fermeture de l'application

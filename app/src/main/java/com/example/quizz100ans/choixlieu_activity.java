@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class choixlieu_activity extends AppCompatActivity {
@@ -21,13 +22,13 @@ public class choixlieu_activity extends AppCompatActivity {
     Spinner spinner;
     private String monLieu;
     private static int indexQuest = 0;
-    private int NbQuest =0;
-    private String NbQuest1;
-    private List spinnerList = new ArrayList();
+    protected static List spinnerList = new ArrayList();
     private List recupnbQuestion = new ArrayList();
     private BDAdapter LieuxBdd = new BDAdapter(choixlieu_activity.this);
     private BDAdapter NbQuestionBdd = new BDAdapter(choixlieu_activity.this);
     private int Score;
+    private String lieuFait;
+    private static ArrayList<String> lieuxDejaFait = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +45,20 @@ public class choixlieu_activity extends AppCompatActivity {
         LieuxBdd.open();
         Cursor cursorLieux = LieuxBdd.getTableLieu();
 
+        spinnerList.clear();
+
         if(cursorLieux.getCount() > 0) {
             while(cursorLieux.moveToNext()) {
                 spinnerList.add(cursorLieux.getString(cursorLieux.getColumnIndex("Lieu")));
             }
         }
         LieuxBdd.close();
+
+        if(getLieuxDejaFait() != null){
+            for(int o=0;o<getLieuxDejaFait().size();o++){
+                spinnerList.remove(getLieuxDejaFait().get(o));
+            }
+        }
 
         //Passage d'un contexte et d'un fichier de présentation dans un adapter pour le spinner
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerList);
@@ -90,6 +99,14 @@ public class choixlieu_activity extends AppCompatActivity {
 
     public static void setIndexQuest(int indexQuest) {
         choixlieu_activity.indexQuest = indexQuest;
+    }
+
+    public static ArrayList<String> getLieuxDejaFait() {
+        return lieuxDejaFait;
+    }
+
+    public static void setLieuxDejaFait(String lieuFait) {
+        choixlieu_activity.lieuxDejaFait.add(lieuFait);
     }
 
 }

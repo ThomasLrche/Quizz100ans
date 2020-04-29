@@ -19,6 +19,7 @@
         <activity android:name=".choixlieu_activity"></activity>
         <activity android:name=".Questions_activity"></activity>
         <activity android:name=".AffichageBdd"></activity>
+        <activity android:name=".score_activity"></activity>
     </application>
 
 </manifest>
