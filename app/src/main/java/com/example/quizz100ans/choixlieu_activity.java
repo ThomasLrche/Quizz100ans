@@ -27,11 +27,15 @@ public class choixlieu_activity extends AppCompatActivity {
     private List recupnbQuestion = new ArrayList();
     private BDAdapter LieuxBdd = new BDAdapter(choixlieu_activity.this);
     private BDAdapter NbQuestionBdd = new BDAdapter(choixlieu_activity.this);
+    private int Score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lieu);
+
+        Intent intent = getIntent();
+        Score = intent.getIntExtra("Score",0);
 
         //Récupération du Spinner
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -73,6 +77,7 @@ public class choixlieu_activity extends AppCompatActivity {
 
                     Intent intent = (new Intent(choixlieu_activity.this, Questions_activity.class));
                     intent.putExtra("monLieu", monLieu);
+                    intent.putExtra("Score",Score);
                     startActivity(intent);
             }
         });

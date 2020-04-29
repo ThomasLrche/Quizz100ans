@@ -35,6 +35,7 @@ public class Questions_activity extends AppCompatActivity {
     protected ArrayList<String> listeReponses2 = new ArrayList<>();
     protected ArrayList<String> listeReponses3 = new ArrayList<>();
     protected ArrayList<String> listeReponsesCorrect = new ArrayList<>();
+    private int Score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +51,12 @@ public class Questions_activity extends AppCompatActivity {
         reponse4 = findViewById(R.id.quest4);
         ReponseQuest = findViewById(R.id.questiongrp);
 
+
+
+
         final Intent intent = getIntent();
         Lieu = intent.getStringExtra("monLieu");
+        Score = intent.getIntExtra("Score",0);
 
         BDAdapter QuestionsBdd = new BDAdapter(Questions_activity.this);
         BDAdapter test = new BDAdapter(Questions_activity.this);
@@ -101,13 +106,20 @@ public class Questions_activity extends AppCompatActivity {
             public void onClick(View v) {
                 int selectId = ReponseQuest.getCheckedRadioButtonId();
 
+                if(reponse4.isChecked()){
+                    Score = Score +1;
+
+                }
+                Log.d("test", String.valueOf(Score));
                 choixlieu_activity.setIndexQuest(choixlieu_activity.getIndexQuest() + 1);
 
                 if(choixlieu_activity.getIndexQuest()<listeQuestions.size()) {
                     reload();
                 } else {
                     choixlieu_activity.setIndexQuest(0);
-                    startActivity(new Intent(Questions_activity.this, choixlieu_activity.class));
+                    Intent intent = (new Intent(Questions_activity.this, choixlieu_activity.class));
+                    intent.putExtra("Score", Score);
+                    startActivity(intent);
                 }
             }
         });
@@ -136,6 +148,7 @@ public class Questions_activity extends AppCompatActivity {
 
     public void reload() {
         Intent intent = getIntent();
+        intent.putExtra("Score", Score);
         finish();
         startActivity(intent);
     }
