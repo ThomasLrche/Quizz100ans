@@ -36,6 +36,8 @@ public class Questions_activity extends AppCompatActivity {
     protected ArrayList<String> listeReponses3 = new ArrayList<>();
     protected ArrayList<String> listeReponsesCorrect = new ArrayList<>();
     private int Score = 0;
+    private String User;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,8 @@ public class Questions_activity extends AppCompatActivity {
         final Intent intent = getIntent();
         Lieu = intent.getStringExtra("monLieu");
         Score = intent.getIntExtra("Score",0);
+        User = intent.getStringExtra("User");
+        Log.d("test",User);
 
         BDAdapter QuestionsBdd = new BDAdapter(Questions_activity.this);
         BDAdapter test = new BDAdapter(Questions_activity.this);
@@ -88,7 +92,7 @@ public class Questions_activity extends AppCompatActivity {
             Unereponse2 = listeReponses2.get(a);
             Unereponse3 = listeReponses3.get(a);
             Unereponse4 = listeReponsesCorrect.get(a);
-            Log.d("test",Unereponse1);
+            //Log.d("test",Unereponse1);
         }
 
         QuestionsBdd.close();
@@ -122,10 +126,12 @@ public class Questions_activity extends AppCompatActivity {
                     if(choixlieu_activity.spinnerList.size() == 1){
                         Intent intent = (new Intent(Questions_activity.this, score_activity.class));
                         intent.putExtra("Score", Score);
+                        intent.putExtra("User",User);
                         startActivity(intent);
                     } else {
                         Intent intent = (new Intent(Questions_activity.this, choixlieu_activity.class));
                         intent.putExtra("Score", Score);
+                        intent.putExtra("User",User);
                         startActivity(intent);
                     }
                 }
@@ -157,6 +163,7 @@ public class Questions_activity extends AppCompatActivity {
     public void reload() {
         Intent intent = getIntent();
         intent.putExtra("Score", Score);
+        intent.putExtra("User",User);
         finish();
         startActivity(intent);
     }
