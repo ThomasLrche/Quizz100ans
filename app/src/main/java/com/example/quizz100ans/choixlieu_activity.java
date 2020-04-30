@@ -29,6 +29,8 @@ public class choixlieu_activity extends AppCompatActivity {
     private int Score;
     private String lieuFait;
     private static ArrayList<String> lieuxDejaFait = new ArrayList<>();
+    private String User;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class choixlieu_activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Score = intent.getIntExtra("Score",0);
+        User = intent.getStringExtra("User");
+        Log.d("test",User);
 
         //Récupération du Spinner
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -87,6 +91,7 @@ public class choixlieu_activity extends AppCompatActivity {
                     Intent intent = (new Intent(choixlieu_activity.this, Questions_activity.class));
                     intent.putExtra("monLieu", monLieu);
                     intent.putExtra("Score",Score);
+                    intent.putExtra("User",User);
                     startActivity(intent);
             }
         });

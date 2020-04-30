@@ -2,6 +2,7 @@ package com.example.quizz100ans;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,9 @@ public class score_activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         score = intent.getIntExtra("Score",0);
-        username = intent.getStringExtra("Username");
+        username = intent.getStringExtra("User");
+
+
 
         UsernameView = findViewById(R.id.textViewUsername);
         UsernameView.setText(username);
