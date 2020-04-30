@@ -3,6 +3,7 @@ package com.example.quizz100ans;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -72,10 +73,16 @@ public class MainActivity extends AppCompatActivity {
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = (new Intent(MainActivity.this, choixlieu_activity.class));
                 username = usernameLabel.getText().toString();
-                intent.putExtra("User", username);
-                startActivity(intent);
+                if(username != null && !username.isEmpty() && username.matches("")){
+                    Intent intent = (new Intent(MainActivity.this, choixlieu_activity.class));
+                    intent.putExtra("User", username);
+                    startActivity(intent);
+                } else {
+                    usernameLabel.setText("");
+                    usernameLabel.setHint("Veuillez entrer un pseudo valide");
+                    usernameLabel.setHintTextColor(Color.RED);
+                }
             }
         });
     }
