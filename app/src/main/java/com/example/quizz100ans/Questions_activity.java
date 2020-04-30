@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -109,34 +110,36 @@ public class Questions_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int selectId = ReponseQuest.getCheckedRadioButtonId();
-
-                if(reponse4.isChecked()){
-                    Score = Score +1;
-
+                if ( !reponse1.isChecked()  &&  !reponse2.isChecked() && !reponse3.isChecked() && !reponse4.isChecked()){
+                    Toast.makeText(Questions_activity.this,"Veuillez Sélectionner au moin une réponse",Toast.LENGTH_LONG).show();
+                } else {
+                if (reponse4.isChecked()) {
+                    Score = Score + 1;
                 }
-                Log.d("test", String.valueOf(Score));
+                //Log.d("test", String.valueOf(Score));
                 choixlieu_activity.setIndexQuest(choixlieu_activity.getIndexQuest() + 1);
-
-                if(choixlieu_activity.getIndexQuest()<listeQuestions.size()) {
+                if (choixlieu_activity.getIndexQuest() < listeQuestions.size()) {
                     reload();
                 } else {
                     choixlieu_activity.setIndexQuest(0);
                     choixlieu_activity.setLieuxDejaFait(Lieu);
 
-                    if(choixlieu_activity.spinnerList.size() == 1){
+                    if (choixlieu_activity.spinnerList.size() == 1) {
                         Intent intent = (new Intent(Questions_activity.this, score_activity.class));
                         intent.putExtra("Score", Score);
-                        intent.putExtra("User",User);
+                        intent.putExtra("User", User);
                         startActivity(intent);
                     } else {
                         Intent intent = (new Intent(Questions_activity.this, choixlieu_activity.class));
                         intent.putExtra("Score", Score);
-                        intent.putExtra("User",User);
+                        intent.putExtra("User", User);
                         startActivity(intent);
                     }
                 }
+             }
             }
         });
+
     }
 
     public String getLaQuestion(int indexQuestion){
