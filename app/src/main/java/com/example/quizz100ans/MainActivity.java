@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 username = usernameLabel.getText().toString();
-                if(username != null && !username.isEmpty() && username.matches("")){
+                if(username != null && !username.isEmpty() && !username.contains(" ")){
                     Intent intent = (new Intent(MainActivity.this, choixlieu_activity.class));
                     intent.putExtra("User", username);
                     startActivity(intent);
