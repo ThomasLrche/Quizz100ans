@@ -45,4 +45,10 @@
             android:layout_weight="1"
             android:text="@string/buttonValiderMenu" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonterminerquizz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terminer le Quizz" />
 </LinearLayout>
