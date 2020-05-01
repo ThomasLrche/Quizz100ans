@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class BDAdapter {
 
-    static final int VERSION_BDD =40;
+    static final int VERSION_BDD =46;
     private static final String BDDQUIZZ = "quizz_bdd";
     static final String TABLE_Lieu = "TABLE_Lieu";
     static final String TABLE_Question = "TABLE_Question";

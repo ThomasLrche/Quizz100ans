@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Questions_activity extends AppCompatActivity {
 
@@ -38,7 +39,8 @@ public class Questions_activity extends AppCompatActivity {
     protected ArrayList<String> listeReponsesCorrect = new ArrayList<>();
     private int Score = 0;
     private String User;
-
+    private static ArrayList<String> Questionsdejafaites = new ArrayList<>();
+    private int value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +56,11 @@ public class Questions_activity extends AppCompatActivity {
         reponse4 = findViewById(R.id.quest4);
         ReponseQuest = findViewById(R.id.questiongrp);
 
-
-
-
         final Intent intent = getIntent();
         Lieu = intent.getStringExtra("monLieu");
         Score = intent.getIntExtra("Score",0);
         User = intent.getStringExtra("User");
-        Log.d("test",User);
+        //Log.d("test",User);
 
         BDAdapter QuestionsBdd = new BDAdapter(Questions_activity.this);
         BDAdapter test = new BDAdapter(Questions_activity.this);
@@ -116,9 +115,8 @@ public class Questions_activity extends AppCompatActivity {
                 if (reponse4.isChecked()) {
                     Score = Score + 1;
                 }
-                //Log.d("test", String.valueOf(Score));
                 choixlieu_activity.setIndexQuest(choixlieu_activity.getIndexQuest() + 1);
-                if (choixlieu_activity.getIndexQuest() < listeQuestions.size()) {
+                if (choixlieu_activity.getIndexQuest() < 5) {
                     reload();
                 } else {
                     choixlieu_activity.setIndexQuest(0);
@@ -149,19 +147,16 @@ public class Questions_activity extends AppCompatActivity {
         }
         return laQuestion;
     }
-
-    public void bdd(){
-
-        BDAdapter ReleveBdd = new BDAdapter(Questions_activity.this);
-        ReleveBdd.open();
-        Cursor c = ReleveBdd.getQuestion(Lieu);
-        ReleveBdd.close();
-
-        //ArrayAdapter adapter = new ArrayAdapter(this, R.layout.activity_question, textView6,c );
-
-        //Question.setAdapter(adapter);
-
+    public void valueAleatoire (){
+        Random random = new Random();
+        int falsevalue = random.nextInt(10-0);
+        if(Questionsdejafaites.toString().contains(String.valueOf(falsevalue))){
+            value=falsevalue;
+        }else{
+            value = random.nextInt(10-0);
+        }
     }
+
 
     public void reload() {
         Intent intent = getIntent();
@@ -169,6 +164,14 @@ public class Questions_activity extends AppCompatActivity {
         intent.putExtra("User",User);
         finish();
         startActivity(intent);
+    }
+
+    public static ArrayList<String> getQuestionDejaFait() {
+        return Questionsdejafaites;
+    }
+
+    public static void setQuestionDejaFait(String Questionfait) {
+        Questions_activity.Questionsdejafaites.add(Questionfait);
     }
 
 }
