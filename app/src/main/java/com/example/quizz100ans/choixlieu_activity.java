@@ -40,7 +40,7 @@ public class choixlieu_activity extends AppCompatActivity {
         Intent intent = getIntent();
         Score = intent.getIntExtra("Score",0);
         User = intent.getStringExtra("User");
-        Log.d("test",User);
+        //Log.d("test",User);
 
         //Récupération du Spinner
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -83,6 +83,7 @@ public class choixlieu_activity extends AppCompatActivity {
 
         //création d'un écouteur pour le bouton
         Button btnValider = findViewById(R.id.buttonValiderLieu);
+        Button finLieu= findViewById(R.id.buttonterminerquizz);
 
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +96,21 @@ public class choixlieu_activity extends AppCompatActivity {
                     startActivity(intent);
             }
         });
+
+        finLieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = (new Intent(choixlieu_activity.this, score_activity.class));
+                intent.putExtra("Score", Score);
+                intent.putExtra("User", User);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
 
     }
 
