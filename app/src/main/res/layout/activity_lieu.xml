@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -24,31 +28,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90sp"
+        android:layout_marginTop="50sp"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/campusjol" />
 
         <Button
             android:id="@+id/buttonValiderLieu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="250dp"
+            android:layout_height="45sp"
             android:layout_weight="1"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/roundedbuttonnoir"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
             android:text="@string/buttonValiderMenu" />
-    </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonterminerquizz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Terminer le Quizz" />
+        <Button
+            android:id="@+id/buttonterminerquizz"
+            android:layout_width="250dp"
+            android:layout_height="45sp"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/roundedbuttonnoir"
+            android:text="Terminer le Quizz"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+    </LinearLayout>
 </LinearLayout>
+
+</ScrollView>
