@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -31,9 +31,9 @@
         android:orientation="horizontal">
 
         <RadioGroup
+            android:id="@+id/questiongrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/questiongrp"
             android:layout_weight="1">
 
             <RelativeLayout
@@ -42,17 +42,17 @@
                 android:layout_marginTop="50sp"
                 android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/quest1"
-                android:layout_width="160dp"
-                android:layout_height="45sp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20sp"
-                android:layout_weight="1"
-                android:background="@drawable/yourbuttonbackground"
-                android:button="@android:color/transparent"
-                android:textAlignment="center"
-                android:text="RadioButton" />
+                <RadioButton
+                    android:id="@+id/quest1"
+                    android:layout_width="160dp"
+                    android:layout_height="45sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/yourbuttonbackground"
+                    android:button="@android:color/transparent"
+                    android:text="RadioButton"
+                    android:textAlignment="center" />
 
                 <RadioButton
                     android:id="@+id/quest2"
@@ -63,8 +63,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/yourbuttonbackground"
                     android:button="@android:color/transparent"
-                    android:textAlignment="center"
-                    android:text="RadioButton" />
+                    android:text="RadioButton"
+                    android:textAlignment="center" />
 
             </RelativeLayout>
 
@@ -74,29 +74,29 @@
                 android:layout_marginTop="50sp"
                 android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/quest3"
-                android:layout_width="160dp"
-                android:layout_height="45sp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20sp"
-                android:layout_weight="1"
-                android:background="@drawable/yourbuttonbackground"
-                android:button="@android:color/transparent"
-                android:textAlignment="center"
-                android:text="RadioButton" />
+                <RadioButton
+                    android:id="@+id/quest3"
+                    android:layout_width="160dp"
+                    android:layout_height="45sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/yourbuttonbackground"
+                    android:button="@android:color/transparent"
+                    android:text="RadioButton"
+                    android:textAlignment="center" />
 
-            <RadioButton
-                android:id="@+id/quest4"
-                android:layout_width="160dp"
-                android:layout_height="45sp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20sp"
-                android:layout_weight="1"
-                android:background="@drawable/yourbuttonbackground"
-                android:button="@android:color/transparent"
-                android:textAlignment="center"
-                android:text="RadioButton" />
+                <RadioButton
+                    android:id="@+id/quest4"
+                    android:layout_width="160dp"
+                    android:layout_height="45sp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/yourbuttonbackground"
+                    android:button="@android:color/transparent"
+                    android:text="RadioButton"
+                    android:textAlignment="center" />
 
             </RelativeLayout>
 

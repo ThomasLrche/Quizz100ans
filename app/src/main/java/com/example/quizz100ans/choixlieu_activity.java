@@ -30,17 +30,16 @@ public class choixlieu_activity extends AppCompatActivity {
     private String lieuFait;
     private static ArrayList<String> lieuxDejaFait = new ArrayList<>();
     private String User;
-
+    private ArrayList<Integer> numfait = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lieu);
-
+        numfait.add(0);
         Intent intent = getIntent();
         Score = intent.getIntExtra("Score",0);
         User = intent.getStringExtra("User");
-        //Log.d("test",User);
 
         //Récupération du Spinner
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -50,7 +49,6 @@ public class choixlieu_activity extends AppCompatActivity {
         Cursor cursorLieux = LieuxBdd.getTableLieu();
 
         spinnerList.clear();
-
         if(cursorLieux.getCount() > 0) {
             while(cursorLieux.moveToNext()) {
                 spinnerList.add(cursorLieux.getString(cursorLieux.getColumnIndex("Lieu")));
@@ -93,6 +91,7 @@ public class choixlieu_activity extends AppCompatActivity {
                     intent.putExtra("monLieu", monLieu);
                     intent.putExtra("Score",Score);
                     intent.putExtra("User",User);
+                    intent.putExtra("numfait",numfait);
                     startActivity(intent);
             }
         });
