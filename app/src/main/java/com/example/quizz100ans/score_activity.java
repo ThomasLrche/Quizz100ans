@@ -30,7 +30,7 @@ public class score_activity extends AppCompatActivity {
         UsernameView.setText(username);
 
         ScoreView = findViewById(R.id.textViewScore);
-        ScoreView.setText("Vous avez réussi à obtenir " + score + " points !");
+        ScoreView.setText("Votre score est de " + score + "/10 !");
     }
 
     // Lors du  clique sur bouton exit, fermeture de l'application

@@ -50,10 +50,11 @@
                     android:layout_width="0dp"
                     android:layout_height="45sp"
                     android:layout_weight="1"
+                    android:padding="10dp"
                     android:background="@drawable/roundedbutton"
                     android:ems="13"
                     android:inputType="textPersonName"
-                    android:hint="  Entrer un pseudo" />
+                    android:hint="Entrer un pseudo" />
 
             </LinearLayout>
         </LinearLayout>
